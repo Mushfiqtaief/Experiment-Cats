@@ -1,0 +1,317 @@
+proxies:
+  - name: "Server-1"
+    type: socks5
+    server: 27.147.225.94
+    port: 10888
+    username: exrex
+    password: exrex
+
+  - name: "Server-2"
+    type: socks5
+    server: 103.137.160.49
+    port: 6969
+    username: "@BDiX_BypassX"
+    password: "@BDiX_BypassX"
+
+  - name: "Server-3"
+    type: socks5
+    server: 119.40.84.250
+    port: 1052
+    username: exrex
+    password: exrex
+
+  - name: "Server-4"
+    type: socks5
+    server: 203.188.250.61
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-5"
+    type: socks5
+    server: 103.200.93.77
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-6"
+    type: socks5
+    server: 43.243.206.90
+    port: 9090
+    username: MX
+    password: XM
+
+  - name: "Server-7"
+    type: socks5
+    server: 115.127.139.114
+    port: 9090
+    username: exrex
+    password: exrex
+
+  - name: "Server-8"
+    type: socks5
+    server: 103.245.205.110
+    port: 6868
+    username: exrex
+    password: exrex
+
+  - name: "Server-9"
+    type: socks5
+    server: 103.35.109.22
+    port: 4040
+    username: exrex
+    password: exrex
+
+  - name: "Server-10"
+    type: socks5
+    server: 49.0.33.154
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-11"
+    type: socks5
+    server: 49.0.33.195
+    port: 9090
+    username: exrex
+    password: exrex
+
+  - name: "Server-12"
+    type: socks5
+    server: 103.49.200.177
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-13"
+    type: socks5
+    server: 103.184.94.134
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-14"
+    type: socks5
+    server: 203.83.178.50
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-15"
+    type: socks5
+    server: 49.0.33.206
+    port: 9090
+    username: exrex
+    password: exrex
+
+  - name: "Server-16"
+    type: socks5
+    server: 103.230.62.197
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-17"
+    type: socks5
+    server: 103.150.27.253
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-18"
+    type: socks5
+    server: 182.160.127.230
+    port: 6969
+    username: exrex
+    password: exrex
+
+  - name: "Server-19"
+    type: socks5
+    server: 180.92.225.206
+    port: 1080
+    username: exrex
+    password: exrex
+
+  - name: "Server-20"
+    type: socks5
+    server: 49.0.41.6
+    port: 9090
+    username: exrex
+    password: exrex
+
+  - name: "Server-21"
+    type: socks5
+    server: 203.95.221.214
+    port: 19201
+    username: REX
+    password: REX
+
+  - name: "Server-22"
+    type: socks5
+    server: 220.247.165.129
+    port: 1088
+    username: test
+    password: test
+
+  - name: "Server-23"
+    type: socks5
+    server: 203.76.220.168
+    port: 1052
+    username: exrex
+    password: exrex
+
+  - name: "Server-24"
+    type: socks5
+    server: 113.11.67.73
+    port: 15524
+    username: exrex
+    password: exrex
+
+  - name: "Server-25"
+    type: socks5
+    server: 122.152.49.250
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-26"
+    type: socks5
+    server: 113.11.64.249
+    port: 5524
+    username: REX
+    password: REX
+
+  - name: "Server-27"
+    type: socks5
+    server: 103.149.107.246
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-28"
+    type: socks5
+    server: 45.120.115.5
+    port: 19201
+    username: exrex
+    password: exrex
+
+  - name: "Server-29"
+    type: socks5
+    server: 103.106.35.162
+    port: 19201
+    username: exrex
+    password: exrex
+    
+  - name: "Server-30"
+    type: socks5
+    server: 113.11.64.193
+    port: 19568
+    username: exrex
+    password: exrex
+
+  - name: "Server-31"
+    type: http
+    server: 45.115.112.138
+    port: 7675
+
+  - name: "Server-32"
+    type: http
+    server: 121.200.61.221
+    port: 6565
+    
+  - name: "Server-33"
+    type: socks5
+    server: circle.bypassempire.com
+    port: 6969
+    username: "@bdiix_bypass"
+    password: "@bdiix_bypass"
+
+  - name: "Server-34"
+    type: socks5
+    server: 103.186.238.1
+    port: 9169
+    username: "true"
+    password: "true"
+
+  - name: "Server-35"
+    type: socks5
+    server: icc.bypassempire.com
+    port: 6969
+    username: "@bdiix_bypass"
+    password: "@bdiix_bypass"
+
+  - name: "Server-36"
+    type: socks5
+    server: temporary.bypassempire.com
+    port: 6969
+    username: "@bdiix_bypass"
+    password: "@bdiix_bypass"
+
+  - name: "Server-37"
+    type: socks5
+    server: bdix.bypassempire.com
+    port: 1080
+    username: "@bdiix_bypass"
+    password: "@bdiix_bypass"
+
+  - name: "Server-38"
+    type: http
+    server: 202.40.178.165
+    port: 12761
+
+  - name: "Server-39"
+    type: http
+    server: 45.115.114.146
+    port: 7653
+
+  - name: "Server-40"
+    type: http
+    server: 121.200.63.205
+    port: 8742
+
+  - name: "Server-41"
+    type: http
+    server: 103.199.109.154
+    port: 7841
+
+  - name: "Server-42"
+    type: socks5
+    server: 103.85.241.148
+    port: 6969
+    username: "@BDiX_BypassX"
+    password: "@BDiX_BypassX"
+
+  - name: "Server-43"
+    type: socks5
+    server: 103.79.182.7
+    port: 6969
+    username: "@BDiX_BypassX"
+    password: "@BDiX_BypassX"
+
+  - name: "Server-44"
+    type: socks5
+    server: 122.144.12.155
+    port: 6969
+    username: "@BDiX_BypassX"
+    password: "@BDiX_BypassX"
+    
+  - name: "Server-45"
+    type: socks5
+    server: 203.76.221.167
+    port: 1080
+    username: "@ExperimentCats"
+    password: "@ExperimentCats"
+
+  - name: "Server-46"
+    type: socks5
+    server: 122.144.12.30
+    port: 6969
+    username: "@BDiX_BypassX"
+    password: "@BDiX_BypassX"
+
+  - name: "Server-47"
+    type: socks5
+    server: 103.199.109.154
+    port: 1080
+    username: "@bdiix_bypass"
+    password: "@bdiix_bypass"
