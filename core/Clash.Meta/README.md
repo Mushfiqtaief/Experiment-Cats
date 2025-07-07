@@ -1,115 +1,101 @@
-# mihomo
-A simple python pydantic model (type hint and autocompletion support) for Honkai: Star Rail parsed data from the Mihomo API.
+<h1 align="center">
+  <img src="Meta.png" alt="Meta Kennel" width="200">
+  <br>Meta Kernel<br>
+</h1>
 
-API url: https://api.mihomo.me/sr_info_parsed/{UID}?lang={LANG}
+<h3 align="center">Another Mihomo Kernel.</h3>
 
-## Installation
-```
-pip install -U git+https://github.com/KT-Yeh/mihomo.git
-```
+<p align="center">
+  <a href="https://goreportcard.com/report/github.com/MetaCubeX/mihomo">
+    <img src="https://goreportcard.com/badge/github.com/MetaCubeX/mihomo?style=flat-square">
+  </a>
+  <img src="https://img.shields.io/github/go-mod/go-version/MetaCubeX/mihomo/Alpha?style=flat-square">
+  <a href="https://github.com/MetaCubeX/mihomo/releases">
+    <img src="https://img.shields.io/github/release/MetaCubeX/mihomo/all.svg?style=flat-square">
+  </a>
+  <a href="https://github.com/MetaCubeX/mihomo">
+    <img src="https://img.shields.io/badge/release-Meta-00b4f0?style=flat-square">
+  </a>
+</p>
 
-## Usage
+## Features
 
-### Basic
-There are two parsed data formats:
-- V1:
-  - URL: https://api.mihomo.me/sr_info_parsed/800333171?lang=en&version=v1
-  - Fetching: use `client.fetch_user_v1(800333171)`
-  - Data model: `mihomo.models.v1.StarrailInfoParsedV1`
-  - All models defined in `mihomo/models/v1` directory.
-- V2: 
-  - URL: https://api.mihomo.me/sr_info_parsed/800333171?lang=en
-  - Fetching: use `client.fetch_user(800333171)`
-  - Data model: `mihomo.models.StarrailInfoParsed`
-  - All models defined in `mihomo/models` directory.
+- Local HTTP/HTTPS/SOCKS server with authentication support
+- VMess, VLESS, Shadowsocks, Trojan, Snell, TUIC, Hysteria protocol support
+- Built-in DNS server that aims to minimize DNS pollution attack impact, supports DoH/DoT upstream and fake IP.
+- Rules based off domains, GEOIP, IPCIDR or Process to forward packets to different nodes
+- Remote groups allow users to implement powerful rules. Supports automatic fallback, load balancing or auto select node
+  based off latency
+- Remote providers, allowing users to get node lists remotely instead of hard-coding in config
+- Netfilter TCP redirecting. Deploy Mihomo on your Internet gateway with `iptables`.
+- Comprehensive HTTP RESTful API controller
 
-If you don't want to use `client.get_icon_url` to get the image url everytime, you can use `client.fetch_user(800333171, replace_icon_name_with_url=True)` to get the parsed data with asset urls.
+## Dashboard
 
-### Example
-```py
-import asyncio
+A web dashboard with first-class support for this project has been created; it can be checked out at [metacubexd](https://github.com/MetaCubeX/metacubexd).
 
-from mihomo import Language, MihomoAPI
-from mihomo.models import StarrailInfoParsed
-from mihomo.models.v1 import StarrailInfoParsedV1
+## Configration example
 
-client = MihomoAPI(language=Language.EN)
+Configuration example is located at [/docs/config.yaml](https://github.com/MetaCubeX/mihomo/blob/Alpha/docs/config.yaml).
 
+## Docs
 
-async def v1():
-    data: StarrailInfoParsedV1 = await client.fetch_user_v1(800333171)
+Documentation can be found in [mihomo Docs](https://wiki.metacubex.one/).
 
-    print(f"Name: {data.player.name}")
-    print(f"Level: {data.player.level}")
-    print(f"Signature: {data.player.signature}")
-    print(f"Achievements: {data.player_details.achievements}")
-    print(f"Characters count: {data.player_details.characters}")
-    print(f"Profile picture url: {client.get_icon_url(data.player.icon)}")
-    for character in data.characters:
-        print("-----------")
-        print(f"Name: {character.name}")
-        print(f"Rarity: {character.rarity}")
-        print(f"Level: {character.level}")
-        print(f"Avatar url: {client.get_icon_url(character.icon)}")
-        print(f"Preview url: {client.get_icon_url(character.preview)}")
-        print(f"Portrait url: {client.get_icon_url(character.portrait)}")
+## For development
 
+Requirements:
+[Go 1.20 or newer](https://go.dev/dl/)
 
-async def v2():
-    data: StarrailInfoParsed = await client.fetch_user(800333171, replace_icon_name_with_url=True)
+Build mihomo:
 
-    print(f"Name: {data.player.name}")
-    print(f"Level: {data.player.level}")
-    print(f"Signature: {data.player.signature}")
-    print(f"Profile picture url: {data.player.avatar.icon}")
-    for character in data.characters:
-        print("-----------")
-        print(f"Name: {character.name}")
-        print(f"Rarity: {character.rarity}")
-        print(f"Portrait url: {character.portrait}")
-
-asyncio.run(v1())
-asyncio.run(v2())
+```shell
+git clone https://github.com/MetaCubeX/mihomo.git
+cd mihomo && go mod download
+go build
 ```
 
-### Tools
-`from mihomo import tools`
-#### Remove Duplicate Character
-```py
-    data = await client.fetch_user(800333171)
-    data = tools.remove_duplicate_character(data)
+Set go proxy if a connection to GitHub is not possible:
+
+```shell
+go env -w GOPROXY=https://goproxy.io,direct
 ```
 
-#### Merge Character Data
-```py
-    old_data = await client.fetch_user(800333171)
+Build with gvisor tun stack:
 
-    # Change characters in game and wait for the API to refresh
-    # ...
-
-    new_data = await client.fetch_user(800333171)
-    data = tools.merge_character_data(new_data, old_data)
+```shell
+go build -tags with_gvisor
 ```
 
-### Data Persistence
-Take pickle and json as an example
-```py
-import pickle
-import zlib
-from mihomo import MihomoAPI, Language, StarrailInfoParsed
+### IPTABLES configuration
 
-client = MihomoAPI(language=Language.EN)
-data = await client.fetch_user(800333171)
+Work on Linux OS which supported `iptables`
 
-# Save
-pickle_data = zlib.compress(pickle.dumps(data))
-print(len(pickle_data))
-json_data = data.json(by_alias=True, ensure_ascii=False)
-print(len(json_data))
+```yaml
+# Enable the TPROXY listener
+tproxy-port: 9898
 
-# Load
-data_from_pickle = pickle.loads(zlib.decompress(pickle_data))
-data_from_json = StarrailInfoParsed.parse_raw(json_data)
-print(type(data_from_pickle))
-print(type(data_from_json))
+iptables:
+  enable: true # default is false
+  inbound-interface: eth0 # detect the inbound interface, default is 'lo'
 ```
+
+## Debugging
+
+Check [wiki](https://wiki.metacubex.one/api/#debug) to get an instruction on using debug
+API.
+
+## Credits
+
+- [Dreamacro/clash](https://github.com/Dreamacro/clash)
+- [SagerNet/sing-box](https://github.com/SagerNet/sing-box)
+- [riobard/go-shadowsocks2](https://github.com/riobard/go-shadowsocks2)
+- [v2ray/v2ray-core](https://github.com/v2ray/v2ray-core)
+- [WireGuard/wireguard-go](https://github.com/WireGuard/wireguard-go)
+- [yaling888/clash-plus-pro](https://github.com/yaling888/clash)
+
+## License
+
+This software is released under the GPL-3.0 license.
+
+**In addition, any downstream projects not affiliated with `MetaCubeX` shall not contain the word `mihomo` in their names.**
