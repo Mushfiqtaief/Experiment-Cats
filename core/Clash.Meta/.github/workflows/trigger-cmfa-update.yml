@@ -10,6 +10,9 @@ on:
       - Alpha
     tags:
       - "v*"
+  pull_request_target:
+    branches:
+      - Alpha
       
 jobs:
   # Send "core-updated" to MetaCubeX/ClashMetaForAndroid to trigger update-dependencies
